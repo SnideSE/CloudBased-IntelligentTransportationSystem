@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driving Speed</title>
+
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Load Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Load Socket.io -->
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" />
+
+    <!-- DataTables JavaScript -->
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+    <!-- Load your main.js -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom_styles.css') }}">
+</head>
+<body>
+    <canvas id="drivingSpeedChart"></canvas>
+    <label for="datePicker">Select a date:</label>
+    <input type="date" id="datePicker" min="2017-01-01" max="2017-01-10" value="2017-01-01">
+    <p>Current Timestamp Range: <span id="currentTimestampRange"></span></p>
+    <p>Next Update in <span id="timer">30</span> seconds</p>
+    <div id="warnings" style="color: red;"></div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driving Behavior Information</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Include DataTables -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+  <!-- Include main.js -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <!-- Include css -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/custom_styles.css') }}">
+</head>
+
+<body class="bg-gray-100">
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-2xl font-semibold text-gray-800 mb-6">Driving Behavior Information</h1>
+    <div class="bg-white shadow-md rounded-lg p-6">
+      <table id="driving-data-table" class="w-full">
+        <thead>
+          <tr>
+            <th class="border-b-2 border-gray-200 text-left text-gray-800">Car Plate Number</th>
+            <th class="border-b-2 border-gray-200 text-left text-gray-800">Overspeed Count</th>
+            <th class="border-b-2 border-gray-200 text-left text-gray-800">Fatigue Driving Count</th>
+            <th class="border-b-2 border-gray-200 text-left text-gray-800">Total Time of Overspeed (s)</th>
+            <th class="border-b-2 border-gray-200 text-left text-gray-800">Total Time of Neutral Slide (s)</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <!-- <div class="jump-to-page">
+        <label for="jump-to-page-input">Jump to page:</label>
+        <input type="number" id="jump-to-page-input" min="1" step="1">
+        <button id="jump-to-page-btn">Go</button> -->
+    </div>
+    </div>
+  </div>
+</body>
+</html>
