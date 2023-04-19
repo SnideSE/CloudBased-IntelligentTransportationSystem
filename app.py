@@ -12,9 +12,18 @@ from datetime import datetime, timedelta
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
-spark = SparkSession.builder \
-    .appName("Driving Behavior Analysis") \
+
+spark = (
+    SparkSession.builder.appName("Driving Behavior Analysis")
+    .config("spark.network.timeout", "600s")
+    .config("spark.executor.cores", "2")  
+    .config("spark.executor.instances", "4")  
+    .config("spark.executor.memory", "2g")  
+    .config("spark.driver.memory", "1g")  
+    .config("spark.driver.cores", "1")  
+    .config("spark.default.parallelism", "100")  
     .getOrCreate()
+)
 
 class DatetimeEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -22,9 +31,6 @@ class DatetimeEncoder(json.JSONEncoder):
             return obj.isoformat()
         return super(DatetimeEncoder, self).default(obj)
     
-dt = datetime.now()
-dt_string = dt.strftime('%Y-%m-%d %H:%M:%S')
-
 def read_driving_data(folder_path):
     driving_data = {}
     for filename in os.listdir(folder_path):
@@ -88,10 +94,6 @@ def get_driving_speed_data(data_folder_path, start_time, time_interval):
         F.mean("Speed").alias("avg_speed"),
         F.sum("isOverspeed").alias("overspeed_count")
     )
-
-    combined_dataframe.printSchema()
-    driving_speed_data.printSchema()
-    driving_speed_data.show()
 
     driving_speed_data = driving_speed_data.withColumn(
         "records", F.expr("transform(records, x -> named_struct('Time', x.Time, 'Speed', x.col2, 'isOverspeed', x.isOverspeed))")
@@ -203,8 +205,11 @@ def fetch_earliest_timestamp():
     
 @socketio.on('selected_date_and_time')
 def handle_selected_date_and_time(selected_date, start_time, time_interval):
-    data_folder_path = "output_data" 
-    start_time = datetime.strptime(str(start_time), "%Y-%m-%d %H:%M:%S") 
+    data_folder_path = "output_data"
+    if not start_time:
+        start_time = '2017-01-01 08:00:05'
+
+    start_time = datetime.strptime(str(start_time), "%Y-%m-%d %H:%M:%S")
     driving_speed_data = get_driving_speed_data(data_folder_path, start_time, time_interval) 
     driving_speed_data_serializable = []
 
