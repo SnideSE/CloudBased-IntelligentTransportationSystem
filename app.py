@@ -2,24 +2,17 @@ from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO, emit
 import csv
 import os
-import time
 import datetime
-import threading
 import json
-import pandas as pd
-from collections import defaultdict
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
 from pyspark.sql import functions as F
-from pyspark.sql.window import Window
-from pyspark.sql.types import StringType, MapType, FloatType, IntegerType
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 spark = SparkSession.builder \
-    .master("local") \
     .appName("Driving Behavior Analysis") \
     .getOrCreate()
 
@@ -233,4 +226,6 @@ def handle_get_driving_speed_data(time_interval, specific_date=None, start_time=
     emit('driving_speed_data', driving_speed_data)
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
+    import os
+    port = int(os.environ.get("PORT", 8080))
+    socketio.run(app, host='0.0.0.0', port=port, debug=True)

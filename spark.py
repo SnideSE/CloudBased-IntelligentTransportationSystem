@@ -76,13 +76,13 @@ else:
     print("No CSV files found in the specified directory.")
 
 
-# Step 2: Statistical analysis
+# Statistical analysis
 mean_values = data.mean(numeric_only=True)
 median_values = data.median(numeric_only=True)
 std_values = data.std(numeric_only=True)
 correlation_matrix = data.corr(method='pearson', numeric_only=True)
 
-# Step 3: Data visualization
+# Data visualization
 # Box plot for total_rapid_accelerations
 plt.figure()
 sns.boxplot(x='total_rapid_accelerations', data=data)
@@ -94,12 +94,12 @@ sns.barplot(x='driverID', y='total_overspeed_duration', data=data)
 plt.xticks(rotation=90)
 plt.show()
 
-# Step 4: Correlation analysis
+# Correlation analysis
 correlation_matrix = data.corr(method='pearson', numeric_only=True)
 print("Correlation matrix:")
 print(correlation_matrix)
 
-# Step 5: Ranking and clustering
+# Ranking and clustering
 features = data[['total_rapid_accelerations', 'total_rapid_decelerations','total_neutral_slide','total_neutral_slide_duration','total_overspeed','total_overspeed_duration','total_fatigue_driving','total_hthrottle_stop','total_oil_leak','average_speed','total_distance']]
 features.columns = [['total_rapid_accelerations', 'total_rapid_decelerations','total_neutral_slide','total_neutral_slide_duration','total_overspeed','total_overspeed_duration','total_fatigue_driving','total_hthrottle_stop','total_oil_leak','average_speed','total_distance']]
 kmeans = KMeans(n_clusters=3, n_init=10, random_state=0)
@@ -108,7 +108,7 @@ print('')
 print("Cluster assignments:")
 print(data['cluster'].value_counts())
 
-# Step 6: Regression analysis
+# Regression analysis
 X = data[['total_neutral_slide','total_neutral_slide_duration','total_overspeed','total_overspeed_duration','total_fatigue_driving','total_hthrottle_stop','total_oil_leak']]
 y = data['average_speed']
 
@@ -125,7 +125,7 @@ print('')
 print("Regression score (R^2):")
 print(regression.score(X_test, y_test))
 
-# Step 7: Anomaly detection
+# Anomaly detection
 iso_forest = IsolationForest(contamination=0.1 )
 
 iso_forest.fit(features)

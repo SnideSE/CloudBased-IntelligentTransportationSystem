@@ -2,7 +2,6 @@ import csv
 import os
 import re
 
-# Define headers for the dataset
 headers = [
     "driverID",
     "carPlateNumber",
@@ -39,7 +38,7 @@ if not os.path.exists(output_folder):
 def clean_row(row):
     cleaned_row = []
     for i, cell in enumerate(row):
-        if i == 1:  # Assuming the car plate number is the second field (index 1)
+        if i == 1:
             cleaned_cell = re.sub(r'[^a-zA-Z0-9]', '', cell)
         else:
             cleaned_cell = cell
