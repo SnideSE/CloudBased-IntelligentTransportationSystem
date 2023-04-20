@@ -1,0 +1,146 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f3f4f6;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.table th {
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.table tbody tr:hover {
+    background-color: #edf2f7;
+}
+
+/* Navigation */
+.navbar {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar a {
+    color: #1A1A1A;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-right: 1.5rem;
+  }
+  
+  .navbar a:last-child {
+    margin-right: 0;
+  }
+  
+  .navbar .logo {
+    font-size: 1.5rem;
+  }
+  
+  .navbar ul {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .navbar ul li {
+    margin-left: 2rem;
+  }
+  
+  .navbar ul li a {
+    color: #1A1A1A;
+    text-decoration: none;
+  }
+  
+  .navbar ul li a:hover {
+    color: #333333;
+  }
+  
+#game {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-image: url("/static/background.gif");
+    background-size: cover;
+  }
+  
+  #car {
+    position: absolute;
+    bottom: 5px; /* Adjust the bottom value */
+    width: 100px;
+    height: 100px;
+    background-image: url("/static/car.gif");
+    background-size: cover;
+    transform-origin: center;
+    transform: scaleX(-1);
+  }
+  
+  .animated-card {
+    transition: all 0.3s ease;
+    transform: translateY(0);
+  }
+  
+  .animated-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #correlation-matrix {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  #correlation-matrix th,
+  #correlation-matrix td {
+    min-width: min-content;
+    white-space: nowrap;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  
+  #correlation-matrix th {
+    background-color: #4a5568;
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #2d3748;
+  }
+  
+  #correlation-matrix tbody tr:hover {
+    background-color: #f7fafc;
+  }
+  
+  
+  

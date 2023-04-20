@@ -15,13 +15,23 @@
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   <!-- Include css -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/custom_styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/shared_styles.css') }}">
+  <script src="{{ url_for('static', filename='js/correlation_matrix.js') }}"></script>
 </head>
-
-<body class="bg-gray-100">
-  <div class="container mx-auto px-4 py-8">
-    <h1 class="text-2xl font-semibold text-gray-800 mb-6">Driving Behavior Information</h1>
+<body>
+<!-- Navigation -->
+<nav class="navbar">
+  <a href="/" class="logo">CloudProject</a>
+  <ul>
+    <li><a href="/driving_behavior">Driving Behavior</a></li>
+    <li><a href="/driving_speed">Driving Speed</a></li>
+  </ul>
+</nav>
+<!-- DataTable -->
+  <div class="container">
+    <h1>Driving Behavior Information</h1>
     <div class="bg-white shadow-md rounded-lg p-6">
-      <table id="driving-data-table" class="w-full">
+      <table id="driving-data-table" class="table">
         <thead>
           <tr>
             <th class="border-b-2 border-gray-200 text-left text-gray-800">Car Plate Number</th>
@@ -35,7 +45,33 @@
         </tbody>
       </table>
     </div>
+  </div>
+  <div class="container mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold mb-4">Correlation Matrix</h2>
+    <div class="overflow-x-auto">
+      <table id="correlation-matrix" class="w-full text-sm bg-white rounded-lg shadow-lg">
+        <thead>
+          <tr class="table-header bg-gray-200 text-gray-700 font-bold">
+            <th class="p-2"></th>
+            <th class="p-2"></th>
+            <th class="p-2">total_rapid_accelerations</th>
+            <th class="p-2">total_rapid_decelerations</th>
+            <th class="p-2">total_neutral_slide</th>
+            <th class="p-2">total_neutral_slide_duration</th>
+            <th class="p-2">total_overspeed</th>
+            <th class="p-2">total_overspeed_duration</th>
+            <th class="p-2">total_fatigue_driving</th>
+            <th class="p-2">total_hthrottle_stop</th>
+            <th class="p-2">total_oil_leak</th>
+            <th class="p-2">average_speed</th>
+            <th class="p-2">total_distance</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 text-left text-gray-700">
+        </tbody>
+      </table>
     </div>
   </div>
+
 </body>
 </html>

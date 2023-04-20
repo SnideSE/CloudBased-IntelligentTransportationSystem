@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudProject Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/shared_styles.css">
+    <script src="static/js/car_animation.js"></script>
+</head>
+<body class="bg-gray-100">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <a href="/" class="logo">CloudProject</a>
+            <ul>
+                <li><a href="/driving_behavior">Driving Behavior</a></li>
+                <li><a href="/driving_speed">Driving Speed</a></li>
+            </ul>
+        </nav>
+        <div id="game">
+            <div id="car"></div>
+        </div>
+    <div class="container mx-auto p-8">
+        <h1 class="text-4xl font-bold mb-8">CloudProject Dashboard</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+                <img src="static/behavior-icon.png" alt="Driving Behavior Icon" class="w-24 h-24 mb-4">
+                <h2 class="text-2xl font-bold mb-4">Driving Behavior Analysis</h2>
+                <p>Explore and analyze driving behavior patterns using our comprehensive driving behavior data. Discover insights on overspeeding, fatigue driving, and more.</p>
+                <a href="/driving_behavior" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Go to Driving Behavior Analysis</a>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center text-center">
+                <img src="static/speed-icon.png" alt="Driving Speed Icon" class="w-24 h-24 mb-4">
+                <h2 class="text-2xl font-bold mb-4">Driving Speed Analysis</h2>
+                <p>Analyze driving speed patterns and trends using our in-depth driving speed data. Gain insights on average speeds, peak speeds, and more.</p>
+                <a href="/driving_speed" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Go to Driving Speed Analysis</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

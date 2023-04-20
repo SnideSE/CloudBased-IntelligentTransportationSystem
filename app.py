@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 from flask_socketio import SocketIO, emit
 import csv
 import os
@@ -117,8 +117,20 @@ data_folder_path = 'output_data'
 driving_data = read_driving_data(data_folder_path)
 
 @app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/driving_behavior')
 def driving_behavior():
     return render_template('driving_behavior.html', data=driving_data)
+
+@app.route('/driving_speed')
+def driving_speed():
+    return render_template('driving_speed.html')
+
+@app.route('/correlation_matrix')
+def correlation_matrix():
+    return send_from_directory('static', 'correlation_matrix.txt')
 
 @app.route('/fetch_data', methods=['POST'])
 def fetch_data():
@@ -188,11 +200,6 @@ def emit_driving_speed(selected_date, time_offset, time_interval):
     print(f"Emitting data: {driving_speed_data_serializable}")
     emit('update_chart', driving_speed_data_serializable)
     emit('update_warnings', warnings)
-
-
-@app.route('/driving_speed')
-def driving_speed():
-    return render_template('driving_speed.html')
 
 @app.route('/get_earliest_timestamp', methods=['GET'])
 def fetch_earliest_timestamp():
